@@ -35,7 +35,7 @@
 	<script>
 	    $(document).ready(function(){
 			$("button").click(function(){
-			   var t = Number($('#temp').val());//celsius
+			   var t = Number($('#temp').val())
 			   var u = $('#unit').val();
 			   
 			   if(isNaN(t)){
@@ -81,13 +81,28 @@ $("#button").click(function() {
     var t = Number($("#temp").val());
     var u = $('#unit').val();
 
-    // เรียกใช้ฟังก์ชันที่สร้างใหม่
-    if (!validateTemperature(t)) {
-        return; 
-    }
+    if (!validateTemperature(t)) return;
 
-    // ... ส่วนการคำนวณที่เหลือคงเดิม ...
+    
+    var converted = convertTemperature(t, u);
+
+   
+    $("#result").html("Temperature is " + converted.val + " in " + converted.unitName);
 });
+function convertTemperature(t, u) {
+    var result = { val: 0, unitName: "" };
+    if (u == "F") {
+        result.val = t * (9 / 5) + 32;
+        result.unitName = "Fahrenheit";
+    } else if (u == "K") {
+        result.val = t + 273.15;
+        result.unitName = "Kelvin";
+    } else if (u == "R") {
+        result.val = t * (4 / 5);
+        result.unitName = "Réaumur";
+    }
+    return result;
+}
 	</script>
 </body>
 </html>
