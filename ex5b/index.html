@@ -81,12 +81,13 @@ $("#button").click(function() {
     var t = Number($("#temp").val());
     var u = $('#unit').val();
 
-    // เรียกใช้ฟังก์ชันที่สร้างใหม่
-    if (!validateTemperature(t)) {
-        return; 
-    }
+    if (!validateTemperature(t)) return;
 
-    // ... ส่วนการคำนวณที่เหลือคงเดิม ...
+    // เรียกใช้ฟังก์ชันคำนวณที่แยกไว้
+    var converted = convertTemperature(t, u);
+
+    // แสดงผลใน div id="result" แทน alert (ข้อ 10)
+    $("#result").html("Temperature is " + converted.val + " in " + converted.unitName);
 });
 function convertTemperature(t, u) {
     var result = { val: 0, unitName: "" };
