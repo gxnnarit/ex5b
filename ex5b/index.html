@@ -35,7 +35,7 @@
 	<script>
 	    $(document).ready(function(){
 			$("button").click(function(){
-			   var t = Number($('#temp').val())
+			   var t = Number($('#temp').val());//celsius
 			   var u = $('#unit').val();
 			   
 			   if(isNaN(t)){
@@ -81,13 +81,12 @@ $("#button").click(function() {
     var t = Number($("#temp").val());
     var u = $('#unit').val();
 
-    if (!validateTemperature(t)) return;
+    // เรียกใช้ฟังก์ชันที่สร้างใหม่
+    if (!validateTemperature(t)) {
+        return; 
+    }
 
-    
-    var converted = convertTemperature(t, u);
-
-   
-    $("#result").html("Temperature is " + converted.val + " in " + converted.unitName);
+    // ... ส่วนการคำนวณที่เหลือคงเดิม ...
 });
 function convertTemperature(t, u) {
     var result = { val: 0, unitName: "" };
