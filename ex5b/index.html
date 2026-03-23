@@ -66,6 +66,28 @@
 			   alert("Temperature is "+t1+" in "+u1);
 			});
 		});
+		function validateTemperature(t) {
+    if (isNaN(t)) {
+        alert("Please verify whether the temperature value is correct!!!");
+        return false;
+    }
+    if (!(t >= -100 && t <= 100)) {
+        alert("Tempurature entered (in Celsius) must be between 0 and 100 C'");
+        return false;
+    }
+    return true;
+}
+$("#button").click(function() {
+    var t = Number($("#temp").val());
+    var u = $('#unit').val();
+
+    // เรียกใช้ฟังก์ชันที่สร้างใหม่
+    if (!validateTemperature(t)) {
+        return; 
+    }
+
+    // ... ส่วนการคำนวณที่เหลือคงเดิม ...
+});
 	</script>
 </body>
 </html>
